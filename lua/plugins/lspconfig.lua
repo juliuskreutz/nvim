@@ -45,6 +45,22 @@ return {
             on_attach = on_attach,
         })
 
+        lspconfig.hls.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            settings = {
+                haskell = {
+                    plugin = {
+                        rename = {
+                            config = {
+                                crossModule = true,
+                            },
+                        },
+                    },
+                },
+            },
+        })
+
         vim.api.nvim_create_autocmd("BufWritePre", {
             callback = function() vim.lsp.buf.format() end,
         })
