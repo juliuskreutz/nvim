@@ -8,6 +8,9 @@ return {
             diagnostics = {
                 enable = true,
             },
+            filters = {
+                dotfiles = true,
+            },
         })
 
         vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>")

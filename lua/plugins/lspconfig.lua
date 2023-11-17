@@ -16,14 +16,26 @@ return {
         local on_attach = function(client, bufnr)
             local opts = { buffer = bufnr }
 
+            vim.lsp.codelens.refresh()
+
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
             vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
             vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
             vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
             vim.keymap.set("n", "<leader>rr", vim.lsp.buf.references, opts)
-            vim.keymap.set("n", "<leader>do", vim.diagnostic.open_float, opts)
-            vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev, opts)
-            vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next, opts)
+            vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
+            vim.keymap.set("n", "<leader>cl", vim.lsp.codelens.run, opts)
+
+            vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
+                buffer = bufnr,
+                callback = vim.lsp.codelens.refresh,
+            })
+
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                callback = function()
+                    vim.lsp.buf.format()
+                end,
+            })
 
             if client.server_capabilities.inlayHintProvider then
                 vim.lsp.inlay_hint(bufnr, true)
@@ -43,6 +55,19 @@ return {
         lspconfig.gopls.setup({
             capabilities = capabilities,
             on_attach = on_attach,
+            settings = {
+                gopls = {
+                    hints = {
+                        assignVariableTypes = true,
+                        compositeLiteralFields = true,
+                        compositeLiteralTypes = true,
+                        constantValues = true,
+                        functionTypeParameters = true,
+                        parameterNames = true,
+                        rangeVariableTypes = true,
+                    },
+                }
+            }
         })
 
         lspconfig.hls.setup({
@@ -50,6 +75,7 @@ return {
             on_attach = on_attach,
             settings = {
                 haskell = {
+                    formattingProvider = "fourmolu",
                     plugin = {
                         rename = {
                             config = {
@@ -59,10 +85,6 @@ return {
                     },
                 },
             },
-        })
-
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            callback = function() vim.lsp.buf.format() end,
         })
     end
 }
