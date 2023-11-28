@@ -24,7 +24,6 @@ return {
             vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
             vim.keymap.set("n", "<leader>rr", vim.lsp.buf.references, opts)
             vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
-            vim.keymap.set("n", "<leader>cl", vim.lsp.codelens.run, opts)
 
             vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
                 buffer = bufnr,

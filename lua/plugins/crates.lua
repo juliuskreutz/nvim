@@ -1,7 +1,7 @@
 return {
     "saecki/crates.nvim",
     tag = "v0.4.0",
-    event = { "BufRead Cargo.toml" },
+    event = "BufRead Cargo.toml",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "hrsh7th/nvim-cmp",
