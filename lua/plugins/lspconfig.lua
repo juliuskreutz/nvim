@@ -6,6 +6,7 @@ return {
     },
     dependencies = {
         "williamboman/mason.nvim",
+        "hrsh7th/nvim-cmp",
         "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
@@ -49,6 +50,13 @@ return {
         lspconfig.rust_analyzer.setup({
             capabilities = capabilities,
             on_attach = on_attach,
+            settings = {
+                ["rust-analyzer"] = {
+                    checkOnSave = {
+                        command = "clippy",
+                    },
+                },
+            }
         })
 
         lspconfig.gopls.setup({
@@ -85,5 +93,15 @@ return {
                 },
             },
         })
+
+        lspconfig.clangd.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
+
+        local cmp = require('cmp')
+        local config = cmp.get_config()
+        table.insert(config.sources, { name = "nvim_lsp" })
+        cmp.setup(config)
     end
 }

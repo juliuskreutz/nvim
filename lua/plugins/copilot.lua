@@ -1,6 +1,16 @@
 return {
-    "github/copilot.vim",
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
     config = function()
-        vim.g.copilot_assume_mapped = true
+        require("copilot").setup({
+            suggestion = {
+                auto_trigger = true,
+                keymap = {
+                    next = "<M-n>",
+                    prev = "<M-p>",
+                },
+            }
+        })
     end,
 }
