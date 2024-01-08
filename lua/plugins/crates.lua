@@ -8,7 +8,6 @@ return {
     config = function()
         local crates = require("crates")
 
-
         require("crates").setup({
             src = {
                 cmp = {

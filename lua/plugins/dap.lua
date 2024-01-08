@@ -38,7 +38,6 @@ return {
         vim.keymap.set("n", "<leader>dc", dap.continue)
         vim.keymap.set("n", "<leader>ds", dap.step_over)
 
-
         local dapui = require("dapui")
         dapui.setup()
 

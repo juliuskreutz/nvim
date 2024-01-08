@@ -34,6 +34,20 @@ return {
                         fallback()
                     end
                 end, { "i", "s" }),
+                ["<C-f>"] = cmp.mapping(function(fallback)
+                    if luasnip.jumpable(1) then
+                        luasnip.jump(1)
+                    else
+                        fallback()
+                    end
+                end, { "i", "s" }),
+                ["<C-b>"] = cmp.mapping(function(fallback)
+                    if luasnip.jumpable(-1) then
+                        luasnip.jump(-1)
+                    else
+                        fallback()
+                    end
+                end, { "i", "s" }),
                 ["<CR>"] = cmp.mapping.confirm({ select = false }),
             }),
             sources = cmp.config.sources({
