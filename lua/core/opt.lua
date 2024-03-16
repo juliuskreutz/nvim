@@ -13,7 +13,7 @@ vim.opt.breakindent = true
 vim.opt.hlsearch = false
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.opt.inccommand = 'split'
+vim.opt.inccommand = "split"
 
 vim.opt.scrolloff = 8
 
@@ -26,4 +26,4 @@ vim.opt.exrc = true
 
 vim.opt.conceallevel = 2
 
-vim.opt.showbreak = '↳ '
+vim.opt.showbreak = "↳ "

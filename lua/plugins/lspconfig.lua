@@ -58,21 +58,13 @@ return {
                     }
                 },
             },
+            clangd = {},
         }
 
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
         local on_attach = function(client, bufnr)
             local opts = { buffer = bufnr }
-
-            if client.server_capabilities.codeLensProvider then
-                vim.lsp.codelens.refresh()
-
-                vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
-                    buffer = bufnr,
-                    callback = vim.lsp.codelens.refresh,
-                })
-            end
 
             local telescope = require('telescope.builtin')
             vim.keymap.set("n", "gd", telescope.lsp_definitions, opts)
