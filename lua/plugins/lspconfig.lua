@@ -59,6 +59,8 @@ return {
                 },
             },
             clangd = {},
+            pylsp = {},
+            taplo = {},
         }
 
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -82,6 +84,12 @@ return {
 
         require('mason').setup()
         local ensure_installed = vim.tbl_keys(servers)
+        vim.list_extend(ensure_installed, {
+            "black",
+            "prettier",
+            "beautysh",
+            "taplo",
+        })
         require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
 
         require('mason-lspconfig').setup {

@@ -10,9 +10,12 @@ return {
         conform.setup({
             formatters_by_ft = {
                 markdown = { "prettier" },
+                json = { "prettier" },
                 sh = { "beautysh" },
                 zsh = { "beautysh" },
                 python = { "black" },
+                sql = { "pg_format" },
+                toml = { "taplo" },
             },
             format_on_save = {
                 lsp_fallback = true,
