@@ -1,4 +1,4 @@
 return {
-    "andweeb/presence.nvim",
-    config = true,
+	"andweeb/presence.nvim",
+	config = true,
 }

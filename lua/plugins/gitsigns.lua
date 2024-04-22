@@ -1,11 +1,11 @@
 return {
-    "lewis6991/gitsigns.nvim",
-    event = "VeryLazy",
-    config = function()
-        local gs = require("gitsigns")
+	"lewis6991/gitsigns.nvim",
+	event = "VeryLazy",
+	config = function()
+		local gs = require("gitsigns")
 
-        gs.setup()
+		gs.setup()
 
-        vim.keymap.set("n", "<leader>g", gs.preview_hunk_inline)
-    end,
+		vim.keymap.set("n", "<leader>g", gs.preview_hunk_inline)
+	end,
 }

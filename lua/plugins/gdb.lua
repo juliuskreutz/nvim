@@ -1,3 +1,3 @@
 return {
-    "sakhnik/nvim-gdb",
+	"sakhnik/nvim-gdb",
 }

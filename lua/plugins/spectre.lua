@@ -1,6 +1,6 @@
 return {
-    "nvim-pack/nvim-spectre",
-    cmd = "Spectre",
-    dependencies = "nvim-lua/plenary.nvim",
-    config = true,
+	"nvim-pack/nvim-spectre",
+	cmd = "Spectre",
+	dependencies = "nvim-lua/plenary.nvim",
+	config = true,
 }
