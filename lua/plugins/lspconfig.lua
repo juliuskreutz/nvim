@@ -79,7 +79,7 @@ return {
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 
 			if client.server_capabilities.inlayHintProvider then
-				vim.lsp.inlay_hint.enable(bufnr, true)
+				vim.lsp.inlay_hint.enable(true)
 			end
 		end
 
