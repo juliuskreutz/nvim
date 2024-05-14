@@ -59,7 +59,7 @@ return {
 				},
 			},
 			clangd = {},
-			pyright = {},
+			jedi_language_server = {},
 			ruff_lsp = {},
 			taplo = {},
 		}
@@ -90,7 +90,6 @@ return {
 			"black",
 			"prettier",
 			"beautysh",
-			"taplo",
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
