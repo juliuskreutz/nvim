@@ -9,14 +9,21 @@ return {
 		local crates = require("crates")
 
 		crates.setup({
-			src = {
+			lsp = {
+				enabled = true,
+				on_attach = function()
+					vim.keymap.set("n", "<leader>cu", crates.update_all_crates, { silent = true })
+				end,
+				actions = true,
+				completion = true,
+				hover = true,
+			},
+			completion = {
 				cmp = {
 					enabled = true,
 				},
 			},
 		})
-
-		vim.keymap.set("n", "<leader>cu", crates.update_all_crates, { silent = true })
 
 		local cmp = require("cmp")
 		local config = cmp.get_config()

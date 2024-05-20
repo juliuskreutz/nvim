@@ -62,6 +62,18 @@ return {
 			jedi_language_server = {},
 			ruff_lsp = {},
 			taplo = {},
+			yamlls = {
+				settings = {
+					yaml = {
+						format = {
+							enable = true,
+						},
+						schemas = {
+							["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+						},
+					},
+				},
+			},
 		}
 
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -79,7 +91,7 @@ return {
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 
 			if client.server_capabilities.inlayHintProvider then
-				vim.lsp.inlay_hint.enable(bufnr, true)
+				vim.lsp.inlay_hint.enable(true)
 			end
 		end
 
